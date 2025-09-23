@@ -4,7 +4,7 @@
   "description": "NestJS and ORY Kratos Seamless Integration",
   "main": "index.js",
   "scripts": {
-    "ci:publish": "pnpm publish -r",
+    "ci:publish": "pnpm publish --access public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
