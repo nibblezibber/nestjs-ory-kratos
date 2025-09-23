@@ -1,9 +1,10 @@
 {
   "name": "@devpulse/nestjs-ory-kratos",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "NestJS and ORY Kratos Seamless Integration",
   "main": "index.js",
   "scripts": {
+    "ci:publish": "pnpm publish -r",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -15,6 +16,7 @@
   "license": "MIT",
   "packageManager": "pnpm@10.13.1",
   "devDependencies": {
+    "@changesets/cli": "^2.29.7",
     "@ory/client": "^1.22.2"
   },
   "peerDependencies": {
