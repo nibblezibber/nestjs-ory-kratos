@@ -1,5 +1,11 @@
 # @devpulse/nestjs-ory-kratos
 
+## 0.0.5
+
+### Patch Changes
+
+- 2e2bf0d: reuse nest sesson decorator
+
 ## 0.0.4
 
 ### Patch Changes
