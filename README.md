@@ -16,24 +16,22 @@ Cookie authentication:
 import {
   Controller,
   Get,
-  Request,
-  UseGuards,
   Injectable,
+  UseGuards,
+  Session,
 } from "@nestjs/common";
-import { OryAuthGuard, createUserDecorator } from "@devpulse/nestjs-ory-kratos";
-import type { Identity as UserIdentity } from "@ory/client";
+import { OryAuthGuard } from "@devpulse/nestjs-ory-kratos";
+import type { Session as KratosSession } from "@ory/client";
 
-// Is it better to move CookieAuthGuard and User to separated file
 @Injectable()
-export class CookieAuthGuard extends OryAuthGuard() {}
-export const User = createUserDecorator();
+export class CookieAuthGuard extends OryAuthGuard {}
 
 @Controller()
 export class AppController {
   @UseGuards(CookieAuthGuard)
   @Get("profile")
-  getProfile(@User() user: UserIdentity) {
-    return user;
+  getProfile(@Session() session: KratosSession) {
+    return session.identity;
   }
 }
 ```
