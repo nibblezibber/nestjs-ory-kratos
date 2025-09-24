@@ -10,29 +10,28 @@ npm i @ory/client @devpulse/nestjs-ory-kratos
 
 ## Quick start example
 
-Create you own auth guard:
+Cookie authentication:
 
 ```ts
-import { Injectable } from '@nestjs/common';
-import { OryAuthGuard, createUserDecorator } from '@devpulse/nestjs-ory-kratos';
+import {
+  Controller,
+  Get,
+  Request,
+  UseGuards,
+  Injectable,
+} from "@nestjs/common";
+import { OryAuthGuard, createUserDecorator } from "@devpulse/nestjs-ory-kratos";
+import type { Identity as UserIdentity } from "@ory/client";
 
+// Is it better to move CookieAuthGuard and User to separated file
 @Injectable()
 export class CookieAuthGuard extends OryAuthGuard() {}
-
 export const User = createUserDecorator();
-
-export type { Identity as UserIdentity } from '@ory/client';
-```
-
-Use guard in controller:
-```ts
-import { Controller, Get, Request, UseGuards } from '@nestjs/common';
-import { CookieAuthGuard, User, type UserIdentity } from './auth';
 
 @Controller()
 export class AppController {
   @UseGuards(CookieAuthGuard)
-  @Get('profile')
+  @Get("profile")
   getProfile(@User() user: UserIdentity) {
     return user;
   }
